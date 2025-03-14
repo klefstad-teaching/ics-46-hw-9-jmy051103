@@ -63,5 +63,7 @@ void print_path(const vector<int>& path, int total) {
             cout << " ";
         }
     }
+    cout << " \nTotal cost is " << total << endl;
 }
+
 
