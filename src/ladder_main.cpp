@@ -2,7 +2,7 @@
 
 int main() {
     set<string> word_list;
-    string file_name = "../words.txt";
+    string file_name = "words.txt";
     load_words(word_list, file_name);
 
     string start, end;
