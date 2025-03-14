@@ -19,18 +19,19 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
     int j = 0;
     while (i < len1 && j < len2) {
         if (str1[i] != str2[j]) {
-            if (++edit > d) {
+            edit++;
+            if (edit > d) {
                 return false;
             }
             if (len1 > len2) {
-                ++i;
+                i++;
             }
             else if (len1 < len2) {
-                ++j;
+                j++;
             }
             else {
-                ++i;
-                ++j;
+                i++;
+                j++;
             }
         }
         else {
@@ -38,7 +39,8 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
             ++j;
         }
     }
-    return edit + (len1 - 1) + (len2 - j) <= d;
+    edit += abs((len - 1) - (len2 - j));
+    return edit <= d;
 }
 
 bool is_adjacent(const string& word1, const string& word2) {
@@ -53,6 +55,8 @@ vector<string> generate_word_ladder(const string& begin_word, const string& end_
     
     ladder_queue.push({begin_word});
     visited.insert(begin_word);
+
+    
 
     while (!ladder_queue.empty()) {
         vector<string> ladder = ladder_queue.front();
