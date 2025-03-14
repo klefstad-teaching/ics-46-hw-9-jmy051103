@@ -39,7 +39,7 @@ bool edit_distance_within(const string& str1, const string& str2, int d) {
             ++j;
         }
     }
-    edit += abs((len - 1) - (len2 - j));
+    edit += abs((len1 - 1) - (len2 - j));
     return edit <= d;
 }
 
